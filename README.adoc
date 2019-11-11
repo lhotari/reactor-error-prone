@@ -113,7 +113,7 @@ This can be a powerful way to prevent the most obvious issues entering the code 
 
 == License
 
-Reactor Error Prone is Open Source Software released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+Reactor Error Prone is Open Source Software released under the https://www.apache.org/licenses/LICENSE-2.0[Apache License 2.0]
 
 == How to Contribute
 
