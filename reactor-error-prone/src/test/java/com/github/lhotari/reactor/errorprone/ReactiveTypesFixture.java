@@ -26,6 +26,7 @@ class ReactiveTypesFixture {
                         "  public Mono<Void> then() { return null; }",
                         "  public Mono<Void> thenEmpty(org.reactivestreams.Publisher<Void> other) { return null; }",
                         "  public <V> Flux<V> thenMany(org.reactivestreams.Publisher<V> other) { return null; }",
+                        "  public Mono<Void> and(org.reactivestreams.Publisher<?> other) { return null; }",
                         "  public void subscribe() { }",
                         "}"
                 )
@@ -38,6 +39,7 @@ class ReactiveTypesFixture {
                         "  public Mono<Void> thenEmpty(org.reactivestreams.Publisher<Void> other) { return null; }",
                         "  public <V> Flux<V> thenMany(org.reactivestreams.Publisher<V> other) { return null; }",
                         "  public <V> Mono<V> thenReturn(V value) { return null; }",
+                        "  public Mono<Void> and(org.reactivestreams.Publisher<?> other) { return null; }",
                         "  public void subscribe() { }",
                         "}"
                 );

@@ -40,6 +40,10 @@ public class ReactorInnerPublisherIgnoredTest {
                         "    // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution",
                         "    return getFlux().thenMany(null);",
                         "  }",
+                        "  Mono<Void> and() {",
+                        "    // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution",
+                        "    return getFlux().and(null);",
+                        "  }",
                         "}")
                 .doTest();
     }

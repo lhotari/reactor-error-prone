@@ -17,18 +17,22 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
         getFlux().then().subscribe();
         getFlux().thenMany(null).subscribe();
         getFlux().thenEmpty(null).subscribe();
+        getFlux().and(null).subscribe();
         getMono().then().subscribe();
         getMono().thenMany(null).subscribe();
         getMono().thenEmpty(null).subscribe();
         getMono().thenReturn(null).subscribe();
+        getMono().and(null).subscribe();
 
         Arrays.asList(1, 2, 3).forEach(n -> getFlux().then().subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getFlux().thenMany(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getFlux().thenEmpty(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFlux().and(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().then().subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().thenMany(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().thenEmpty(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().thenReturn(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMono().and(null).subscribe());
     }
 
     public void conditional() {
@@ -36,10 +40,12 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
             getFlux().then().subscribe();
             getFlux().thenMany(null).subscribe();
             getFlux().thenEmpty(null).subscribe();
+            getFlux().and(null).subscribe();
             getMono().then().subscribe();
             getMono().thenMany(null).subscribe();
             getMono().thenEmpty(null).subscribe();
             getMono().thenReturn(null).subscribe();
+            getMono().and(null).subscribe();
         }
 
         return;

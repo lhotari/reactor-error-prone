@@ -34,7 +34,7 @@ Flux.range(1, 10)
         .subscribe();
 ```
 
-The same rule is used for `then`, `thenEmpty`, `thenMany` and `thenReturn` methods.
+The same rule is used for `then`, `thenEmpty`, `thenMany`, `thenReturn` and `and` methods.
 
 == Usage
 

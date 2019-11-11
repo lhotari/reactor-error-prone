@@ -24,14 +24,14 @@ import static com.google.errorprone.predicates.TypePredicates.isDescendantOfAny;
         summary =
                 "The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution",
         explanation =
-                "Calling then|thenEmpty|thenMany|thenReturn on a Flux<Flux<?>> type or Mono<Mono<?>> generally "
+                "Calling then|thenEmpty|thenMany|thenReturn|and on a Flux<Flux<?>> type or Mono<Mono<?>> generally "
                         + "indicate errors.\n\nThe inner publisher will never execute." +
                         "It also means the error case is not being handled",
         linkType = BugPattern.LinkType.NONE,
         severity = WARNING)
 @AutoService(BugChecker.class)
 public class ReactorInnerPublisherIgnored extends BugChecker implements MethodInvocationTreeMatcher {
-    Matcher<ExpressionTree> THEN_METHOD =
+    Matcher<ExpressionTree> COMPLETES_IGNORING_ELEMENTS_METHOD =
             instanceMethod()
                     .onClass(
                             isDescendantOfAny(
@@ -41,11 +41,11 @@ public class ReactorInnerPublisherIgnored extends BugChecker implements MethodIn
                                     )
                             )
                     )
-                    .namedAnyOf("then", "thenEmpty", "thenMany", "thenReturn");
+                    .namedAnyOf("then", "thenEmpty", "thenMany", "thenReturn", "and");
 
     @Override
     public Description matchMethodInvocation(MethodInvocationTree tree, VisitorState state) {
-        if (!THEN_METHOD.matches(tree, state)) {
+        if (!COMPLETES_IGNORING_ELEMENTS_METHOD.matches(tree, state)) {
             return NO_MATCH;
         }
 
