@@ -24,6 +24,9 @@ class ReactiveTypesFixture {
                         "package reactor.core.publisher;",
                         "public class Flux<T> implements reactor.core.CorePublisher<T> {",
                         "  public Mono<Void> then() { return null; }",
+                        "  public Mono<Void> thenEmpty(org.reactivestreams.Publisher<Void> other) { return null; }",
+                        "  public <V> Flux<V> thenMany(org.reactivestreams.Publisher<V> other) { return null; }",
+                        "  public void subscribe() { }",
                         "}"
                 )
                 // Reactor Mono stub
@@ -32,6 +35,9 @@ class ReactiveTypesFixture {
                         "package reactor.core.publisher;",
                         "public class Mono<T> implements reactor.core.CorePublisher<T>  {",
                         "  public Mono<Void> then() { return null; }",
+                        "  public Mono<Void> thenEmpty(org.reactivestreams.Publisher<Void> other) { return null; }",
+                        "  public <V> Flux<V> thenMany(org.reactivestreams.Publisher<V> other) { return null; }",
+                        "  public <V> Mono<V> thenReturn(V value) { return null; }",
                         "  public void subscribe() { }",
                         "}"
                 );

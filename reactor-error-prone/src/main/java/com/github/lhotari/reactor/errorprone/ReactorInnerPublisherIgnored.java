@@ -22,10 +22,9 @@ import static com.google.errorprone.predicates.TypePredicates.isDescendantOfAny;
 @BugPattern(
         name = "ReactorInnerPublisherIgnored",
         summary =
-                "Calling then on a Flux or Mono that contains inner Flux/Mono means that it is never "
-                        + "scheduled for execution",
+                "The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution",
         explanation =
-                "Calling then on a Flux<Flux<?>> type or Mono<Mono<?>> generally "
+                "Calling then|thenEmpty|thenMany|thenReturn on a Flux<Flux<?>> type or Mono<Mono<?>> generally "
                         + "indicate errors.\n\nThe inner publisher will never execute." +
                         "It also means the error case is not being handled",
         linkType = BugPattern.LinkType.NONE,
@@ -42,7 +41,7 @@ public class ReactorInnerPublisherIgnored extends BugChecker implements MethodIn
                                     )
                             )
                     )
-                    .named("then");
+                    .namedAnyOf("then", "thenEmpty", "thenMany", "thenReturn");
 
     @Override
     public Description matchMethodInvocation(MethodInvocationTree tree, VisitorState state) {

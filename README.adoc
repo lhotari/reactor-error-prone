@@ -34,6 +34,8 @@ Flux.range(1, 10)
         .subscribe();
 ```
 
+The same rule is used for `then`, `thenEmpty`, `thenMany` and `thenReturn` methods.
+
 == Usage
 
 This library is available via Jitpack. The repository information is at https://jitpack.io/#lhotari/reactor-error-prone .
