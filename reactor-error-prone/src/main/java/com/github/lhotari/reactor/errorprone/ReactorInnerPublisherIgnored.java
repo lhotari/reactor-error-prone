@@ -27,7 +27,8 @@ import static com.google.errorprone.predicates.TypePredicates.isDescendantOfAny;
                 "Calling then|thenEmpty|thenMany|thenReturn|and on a Flux<Flux<?>> type or Mono<Mono<?>> generally "
                         + "indicate errors.\n\nThe inner publisher will never execute." +
                         "It also means the error case is not being handled",
-        linkType = BugPattern.LinkType.NONE,
+        linkType = BugPattern.LinkType.CUSTOM,
+        link = "https://github.com/lhotari/reactor-error-prone/wiki/ReactorInnerPublisherIgnored",
         severity = WARNING)
 @AutoService(BugChecker.class)
 public class ReactorInnerPublisherIgnored extends BugChecker implements MethodInvocationTreeMatcher {

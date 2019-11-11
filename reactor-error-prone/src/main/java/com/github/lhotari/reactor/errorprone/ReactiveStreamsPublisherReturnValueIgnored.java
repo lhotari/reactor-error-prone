@@ -34,7 +34,8 @@ import static com.google.errorprone.util.ASTHelpers.hasAnnotation;
                 "Methods that return an ignored Publisher generally "
                         + "indicate errors.\n\nIf you don’t check the return value of these methods, the "
                         + "Publisher may never execute. It also means the error case is not being handled",
-        linkType = BugPattern.LinkType.NONE,
+        linkType = BugPattern.LinkType.CUSTOM,
+        link = "https://github.com/lhotari/reactor-error-prone/wiki/ReactiveStreamsPublisherReturnValueIgnored",
         severity = WARNING)
 @AutoService(BugChecker.class)
 public final class ReactiveStreamsPublisherReturnValueIgnored extends AbstractReturnValueIgnored {
