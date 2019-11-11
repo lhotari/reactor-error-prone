@@ -13,6 +13,14 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
         return null;
     }
 
+    private static Flux getFluxRaw() {
+        return null;
+    }
+
+    private static Mono getMonoRaw() {
+        return null;
+    }
+
     {
         getFlux().then().subscribe();
         getFlux().thenMany(null).subscribe();
@@ -35,6 +43,29 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
         Arrays.asList(1, 2, 3).forEach(n -> getMono().and(null).subscribe());
     }
 
+    // raw types
+    {
+        getFluxRaw().then().subscribe();
+        getFluxRaw().thenMany(null).subscribe();
+        getFluxRaw().thenEmpty(null).subscribe();
+        getFluxRaw().and(null).subscribe();
+        getMonoRaw().then().subscribe();
+        getMonoRaw().thenMany(null).subscribe();
+        getMonoRaw().thenEmpty(null).subscribe();
+        getMonoRaw().thenReturn(null).subscribe();
+        getMonoRaw().and(null).subscribe();
+
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxRaw().then().subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxRaw().thenMany(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxRaw().thenEmpty(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxRaw().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoRaw().then().subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoRaw().thenMany(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoRaw().thenEmpty(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoRaw().thenReturn(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoRaw().and(null).subscribe());
+    }
+
     public void conditional() {
         if (false) {
             getFlux().then().subscribe();
@@ -46,6 +77,19 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
             getMono().thenEmpty(null).subscribe();
             getMono().thenReturn(null).subscribe();
             getMono().and(null).subscribe();
+        }
+
+        // raw types
+        if (false) {
+            getFluxRaw().then().subscribe();
+            getFluxRaw().thenMany(null).subscribe();
+            getFluxRaw().thenEmpty(null).subscribe();
+            getFluxRaw().and(null).subscribe();
+            getMonoRaw().then().subscribe();
+            getMonoRaw().thenMany(null).subscribe();
+            getMonoRaw().thenEmpty(null).subscribe();
+            getMonoRaw().thenReturn(null).subscribe();
+            getMonoRaw().and(null).subscribe();
         }
 
         return;
