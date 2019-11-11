@@ -1,3 +1,4 @@
+[#top]
 = reactor-error-prone - Catch common Project Reactor mistakes as compile-time errors
 
 image:https://badges.gitter.im/reactor-error-prone/community.svg[Gitter, link=https://gitter.im/reactor-error-prone/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge]
