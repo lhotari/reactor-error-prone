@@ -1,5 +1,7 @@
 = reactor-error-prone - Catch common Project Reactor mistakes as compile-time errors
 
+image:https://badges.gitter.im/reactor-error-prone/community.svg[Gitter, link=https://gitter.im/reactor-error-prone/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge]
+
 Consists of additional checks for Google https://errorprone.info/[Error Prone]. The goal is to catch common Project Reactor mistakes as compile-time errors
 
 == Checks
@@ -108,3 +110,27 @@ tasks.withType(JavaCompile).configureEach {
 ```
 
 This can be a powerful way to prevent the most obvious issues entering the code base.
+
+== License
+
+Reactor Error Prone is Open Source Software released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+== How to Contribute
+
+The library is Apache 2.0 licensed and accepts contributions via GitHub pull requests.
+
+. Fork it
+. Create your feature branch (`git checkout -b my-new-feature`)
+. Commit your changes (`git commit -am 'Added some feature'`)
+. Push to the branch (`git push origin my-new-feature`)
+. Create new Pull Request
+
+The development requires OpenJDK 11. You can https://sdkman.io/usage[use sdkman to install the JDK].
+
+== Bugs and Feature Requests
+
+If you detect a bug or have a feature request or a good idea for catching common Project Reactor bug patterns as compile-time errors, please https://github.com/lhotari/reactor-error-prone/issues/new[open a GitHub issue] or ping one of the contributors on Twitter or image:https://badges.gitter.im/reactor-error-prone/community.svg[Gitter, link=https://gitter.im/reactor-error-prone/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge].
+
+== Contributors
+
+* https://github.com/lhotari[Lari Hotari] (https://twitter.com/lhotari[@lhotari on Twitter])
