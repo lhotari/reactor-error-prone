@@ -112,6 +112,20 @@ tasks.withType(JavaCompile).configureEach {
 
 This can be a powerful way to prevent the most obvious issues entering the code base.
 
+=== Lombok and Error Prone
+
+Some of the default Error Prone checks make the compilation to crash. The workaround is to disable those checks that have problems with Lombok generated code.
+
+Example of custom configuration to workaround Lombok & Error Prone issues:
+```
+    tasks.withType(JavaCompile).configureEach {
+        options.errorprone {
+            disableWarningsInGeneratedCode = true
+            disable 'FallThrough', 'OverrideThrowableToString', 'UnusedVariable', 'UnusedMethod'
+        }
+    }
+```
+
 == License
 
 Reactor Error Prone is Open Source Software released under the https://www.apache.org/licenses/LICENSE-2.0[Apache License 2.0]
