@@ -90,3 +90,21 @@ additional `path` for `annotationProcessorPaths`
     <version>0.1.1</version>
 </path>
 ```
+
+== Usage Tips
+
+=== Changing severity of checks in Gradle
+
+https://github.com/tbroyer/gradle-errorprone-plugin[Gradle Error Prone] plugin has very flexible ways of configuring the checks.
+
+This is how to make the build fail when an issue is found in `ReactiveStreamsPublisherReturnValueIgnored` or `ReactorInnerPublisherIgnored` checks:
+
+```
+tasks.withType(JavaCompile).configureEach {
+    options.errorprone {
+        error 'ReactiveStreamsPublisherReturnValueIgnored', 'ReactorInnerPublisherIgnored'
+    }
+}
+```
+
+This can be a powerful way to prevent the most obvious issues entering the code base.
