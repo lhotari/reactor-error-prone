@@ -1,5 +1,7 @@
 = reactor-error-prone - Catch common Project Reactor mistakes as compile-time errors
 
+image:https://badges.gitter.im/reactor-error-prone/community.svg[link="https://gitter.im/reactor-error-prone/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
+
 Consists of additional checks for Google https://errorprone.info/[Error Prone]. The goal is to catch common Project Reactor mistakes as compile-time errors
 
 == Checks
