@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"
+
+dependencies {
+    implementation 'com.google.errorprone:error_prone_core:2.3.3'
+    implementation 'com.google.errorprone:error_prone_annotation:2.3.3'
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    testImplementation 'com.google.errorprone:error_prone_test_helpers:2.3.3'
+}

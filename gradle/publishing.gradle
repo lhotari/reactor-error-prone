@@ -1,0 +1,15 @@
+apply plugin: 'maven-publish'
+
+task sourceJar(type: Jar, dependsOn: classes) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) { publication ->
+            from components.java
+            artifact sourceJar
+        }
+    }
+}

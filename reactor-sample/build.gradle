@@ -1,0 +1,9 @@
+plugins {
+    id 'java'
+    id "net.ltgt.errorprone" version "1.1.1"
+}
+
+dependencies {
+    errorprone project(':reactor-error-prone')
+    implementation 'io.projectreactor:reactor-core:3.3.0.RELEASE'
+}

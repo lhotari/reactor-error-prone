@@ -1,0 +1,88 @@
+= reactor-error-prone - Catch common Project Reactor mistakes as compile-time errors
+
+Consists of additional checks for Google https://errorprone.info/[Error Prone]. The goal is to catch common Project Reactor mistakes as compile-time errors
+
+== Checks
+
+=== `ReactiveStreamsPublisherReturnValueIgnored`
+
+Catches issues where a Reactive Streams Publisher (Flux|Mono) return value is ignored.
+
+The Project Reactor documentation contains this example in https://projectreactor.io/docs/core/release/reference/index.html#faq.chain["I used an operator on my Flux but it does not seem to apply. What gives?"]
+
+```
+Flux<String> flux = Flux.just("something", "chain");
+flux.map(secret -> secret.replaceAll(".", "*"));
+flux.subscribe(next -> System.out.println("Received: " + next));
+```
+
+The check will warn about this type of mistakes.
+
+This check is based on Error Prone's https://errorprone.info/bugpattern/RxReturnValueIgnored[RxReturnValueIgnored].
+
+=== `ReactorInnerPublisherIgnored`
+
+Catches issues where `.then()` is called on a type of `Flux<Flux<?>>` or `Mono<Mono<?>>`. Generally this indicates an error since the "inner publishers" will never get executed since nothing will subscribe to them.
+
+Here's an example of such invalid code:
+```
+Flux.range(1, 10)
+  .map(n ->
+    Flux.range(1, n * n)
+        .doOnNext(i -> System.out.println("NEVER PRINTED:" + n + " - " + i)))
+        .then()
+        .subscribe();
+```
+
+== Usage
+
+This library is available via Jitpack. The repository information is at https://jitpack.io/#lhotari/reactor-error-prone .
+
+=== Using in Gradle with gradle-errorprone-plugin
+
+```
+plugins {
+    // ...
+    id "net.ltgt.errorprone" version "1.1.1"
+}
+
+repositories {
+    // ...
+    maven {
+        url 'https://jitpack.io'
+        content {
+            // limits using the jitpack repository for specific artifacts
+            includeGroup 'com.github.lhotari.reactor-error-prone'
+        }
+    }
+}
+
+dependencies {
+    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+    errorprone 'com.github.lhotari.reactor-error-prone:reactor-error-prone:0.1.0'
+    // ...
+}
+```
+
+=== Using in Maven
+
+Follow instructions from http://errorprone.info/docs/installation[Error Prone installation] for using Error Prone in Maven.
+
+required repository
+```
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+additional `path` for `annotationProcessorPaths`
+```
+<path>
+    <groupId>com.github.lhotari.reactor-error-prone</groupId>
+    <artifactId>reactor-error-prone</artifactId>
+    <version>0.1.0</version>
+</path>
+```
