@@ -39,6 +39,19 @@ Flux.range(1, 10)
 
 The same rule is used for `then`, `thenEmpty`, `thenMany`, `thenReturn` and `and` methods.
 
+=== `ReactorStepVerifierReturnValueIgnored`
+
+Catches issues where a Reactor StepVerifier / StepVerifier.LastStep return value is ignored.
+
+The https://projectreactor.io/docs/core/release/reference/index.html#_testing_a_scenario_with_stepverifier[Reactor reference guide has this notice] about the importance of calling `verify` (or one of the `verify*` methods):
+
+IMPORTANT: Remember the `verify()` step, which triggers the verification. To
+help, the API includes a few shortcut methods that combine the terminal expectations with
+a call to `verify()`: `verifyComplete()`, `verifyError()`, `verifyErrorMessage(String)`,
+and others.
+
+The check will warn about violations of this guideline.
+
 == Usage
 
 This library is available via Jitpack. The repository information is at https://jitpack.io/#lhotari/reactor-error-prone .
@@ -100,12 +113,12 @@ additional `path` for `annotationProcessorPaths`
 
 https://github.com/tbroyer/gradle-errorprone-plugin[Gradle Error Prone] plugin has very flexible ways of configuring the checks.
 
-This is how to make the build fail when an issue is found in `ReactiveStreamsPublisherReturnValueIgnored` or `ReactorInnerPublisherIgnored` checks:
+This is how to make the build fail when an issue is found in `ReactiveStreamsPublisherReturnValueIgnored`, `ReactorInnerPublisherIgnored` or `ReactorStepVerifierReturnValueIgnored` checks:
 
 ```
 tasks.withType(JavaCompile).configureEach {
     options.errorprone {
-        error 'ReactiveStreamsPublisherReturnValueIgnored', 'ReactorInnerPublisherIgnored'
+        error 'ReactiveStreamsPublisherReturnValueIgnored', 'ReactorInnerPublisherIgnored', 'ReactorStepVerifierReturnValueIgnored'
     }
 }
 ```
