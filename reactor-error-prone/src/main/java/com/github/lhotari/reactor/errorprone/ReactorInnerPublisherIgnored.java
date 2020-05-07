@@ -8,6 +8,7 @@ import com.google.errorprone.bugpatterns.BugChecker;
 import com.google.errorprone.bugpatterns.BugChecker.MethodInvocationTreeMatcher;
 import com.google.errorprone.matchers.Description;
 import com.google.errorprone.matchers.Matcher;
+import com.google.errorprone.matchers.Matchers;
 import com.google.errorprone.suppliers.Suppliers;
 import com.google.errorprone.util.ASTHelpers;
 import com.sun.source.tree.ExpressionTree;
@@ -50,6 +51,7 @@ public class ReactorInnerPublisherIgnored extends BugChecker implements MethodIn
             return NO_MATCH;
         }
 
+        Type objectType = Suppliers.typeFromString("java.lang.Object").get(state);
         Type fluxType = Suppliers.typeFromString("reactor.core.publisher.Flux").get(state);
         Type monoType = Suppliers.typeFromString("reactor.core.publisher.Mono").get(state);
         Type receiverType = ASTHelpers.getReceiverType(tree);
@@ -61,7 +63,9 @@ public class ReactorInnerPublisherIgnored extends BugChecker implements MethodIn
                 0,
                 state.getTypes());
 
-        if (typeArg == null || !(ASTHelpers.isSubtype(fluxType, typeArg, state) || ASTHelpers.isSubtype(monoType, typeArg, state))) {
+        if (typeArg == null
+                || ASTHelpers.isSubtype(objectType, typeArg, state)
+                || !(ASTHelpers.isSubtype(fluxType, typeArg, state) || ASTHelpers.isSubtype(monoType, typeArg, state))) {
             return NO_MATCH;
         }
 
