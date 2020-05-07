@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     errorprone project(':reactor-error-prone')
+    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
     // required when using Java 8
     errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
     implementation 'io.projectreactor:reactor-core:3.3.0.RELEASE'
