@@ -81,7 +81,7 @@ repositories {
 
 dependencies {
     errorprone 'com.google.errorprone:error_prone_core:2.3.3'
-    errorprone 'com.github.lhotari:reactor-error-prone:0.1.3'
+    errorprone 'com.github.lhotari:reactor-error-prone:0.1.4'
     // required when using Java 8
     errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
     // ...
@@ -107,7 +107,7 @@ additional `path` for `annotationProcessorPaths`
 <path>
     <groupId>com.github.lhotari</groupId>
     <artifactId>reactor-error-prone</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
 </path>
 ```
 
