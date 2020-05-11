@@ -13,6 +13,14 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
         return null;
     }
 
+    private static <T> Flux<T> getFluxAnyType() {
+        return null;
+    }
+
+    private static <T> Mono<T> getMonoAnyType() {
+        return null;
+    }
+
     private static Flux getFluxRaw() {
         return null;
     }
@@ -41,6 +49,28 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
         Arrays.asList(1, 2, 3).forEach(n -> getMono().thenEmpty(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().thenReturn(null).subscribe());
         Arrays.asList(1, 2, 3).forEach(n -> getMono().and(null).subscribe());
+    }
+
+    {
+        getFluxAnyType().then().subscribe();
+        getFluxAnyType().thenMany(null).subscribe();
+        getFluxAnyType().thenEmpty(null).subscribe();
+        getFluxAnyType().and(null).subscribe();
+        getMonoAnyType().then().subscribe();
+        getMonoAnyType().thenMany(null).subscribe();
+        getMonoAnyType().thenEmpty(null).subscribe();
+        getMonoAnyType().thenReturn(null).subscribe();
+        getMonoAnyType().and(null).subscribe();
+
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxAnyType().then().subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxAnyType().thenMany(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxAnyType().thenEmpty(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxAnyType().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoAnyType().then().subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoAnyType().thenMany(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoAnyType().thenEmpty(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoAnyType().thenReturn(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoAnyType().and(null).subscribe());
     }
 
     // raw types
@@ -77,6 +107,18 @@ public class ReactorInnerPublisherIgnoredNegativeCases {
             getMono().thenEmpty(null).subscribe();
             getMono().thenReturn(null).subscribe();
             getMono().and(null).subscribe();
+        }
+
+        if (false) {
+            getFluxAnyType().then().subscribe();
+            getFluxAnyType().thenMany(null).subscribe();
+            getFluxAnyType().thenEmpty(null).subscribe();
+            getFluxAnyType().and(null).subscribe();
+            getMonoAnyType().then().subscribe();
+            getMonoAnyType().thenMany(null).subscribe();
+            getMonoAnyType().thenEmpty(null).subscribe();
+            getMonoAnyType().thenReturn(null).subscribe();
+            getMonoAnyType().and(null).subscribe();
         }
 
         // raw types
