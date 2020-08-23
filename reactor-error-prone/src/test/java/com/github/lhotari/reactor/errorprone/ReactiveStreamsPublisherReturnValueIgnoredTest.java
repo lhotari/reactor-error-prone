@@ -2,12 +2,10 @@ package com.github.lhotari.reactor.errorprone;
 
 import com.google.errorprone.CompilationTestHelper;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 public class ReactiveStreamsPublisherReturnValueIgnoredTest {
     private final CompilationTestHelper compilationHelper =
-            ReactiveTypesFixture.addReactiveTypeStubs(CompilationTestHelper.newInstance(ReactiveStreamsPublisherReturnValueIgnored.class, getClass()));
+            CompilationTestHelper.newInstance(ReactiveStreamsPublisherReturnValueIgnored.class, getClass());
 
     @Test
     public void positiveCases() {

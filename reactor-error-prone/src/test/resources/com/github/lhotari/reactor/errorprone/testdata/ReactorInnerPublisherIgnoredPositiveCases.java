@@ -100,22 +100,22 @@ public class ReactorInnerPublisherIgnoredPositiveCases {
     // and
     {
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        getFluxOfFlux().and(null).subscribe();
+        getFluxOfFlux().then(null).subscribe();
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        getFluxOfMono().and(null).subscribe();
+        getFluxOfMono().then(null).subscribe();
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        getMonoOfMono().and(null).subscribe();
+        getMonoOfMono().then(null).subscribe();
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        getMonoOfFlux().and(null).subscribe();
+        getMonoOfFlux().then(null).subscribe();
 
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        Arrays.asList(1, 2, 3).forEach(n -> getFluxOfFlux().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxOfFlux().then(null).subscribe());
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        Arrays.asList(1, 2, 3).forEach(n -> getFluxOfMono().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getFluxOfMono().then(null).subscribe());
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        Arrays.asList(1, 2, 3).forEach(n -> getMonoOfMono().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoOfMono().then(null).subscribe());
         // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-        Arrays.asList(1, 2, 3).forEach(n -> getMonoOfFlux().and(null).subscribe());
+        Arrays.asList(1, 2, 3).forEach(n -> getMonoOfFlux().then(null).subscribe());
     }
 
     public void conditional() {
@@ -166,13 +166,13 @@ public class ReactorInnerPublisherIgnoredPositiveCases {
         // and
         if (false) {
             // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-            getFluxOfFlux().and(null).subscribe();
+            getFluxOfFlux().then(null).subscribe();
             // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-            getFluxOfMono().and(null).subscribe();
+            getFluxOfMono().then(null).subscribe();
             // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-            getMonoOfMono().and(null).subscribe();
+            getMonoOfMono().then(null).subscribe();
             // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution
-            getMonoOfFlux().and(null).subscribe();
+            getMonoOfFlux().then(null).subscribe();
         }
 
         return;
