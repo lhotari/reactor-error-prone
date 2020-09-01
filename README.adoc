@@ -65,7 +65,7 @@ This library is available via Jitpack. The repository information is at https://
 ```
 plugins {
     // ...
-    id "net.ltgt.errorprone" version "1.1.1"
+    id "net.ltgt.errorprone" version "1.2.1"
 }
 
 repositories {
@@ -80,7 +80,7 @@ repositories {
 }
 
 dependencies {
-    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+    errorprone 'com.google.errorprone:error_prone_core:2.4.0'
     errorprone 'com.github.lhotari:reactor-error-prone:0.1.4'
     // required when using Java 8
     errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'

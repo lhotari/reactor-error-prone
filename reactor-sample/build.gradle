@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    id "net.ltgt.errorprone" version "1.1.1"
+    id "net.ltgt.errorprone" version "1.2.1"
 }
 
 dependencies {
     errorprone project(':reactor-error-prone')
-    errorprone 'com.google.errorprone:error_prone_core:2.3.3'
+    errorprone 'com.google.errorprone:error_prone_core:2.4.0'
     // required when using Java 8
     errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
     implementation 'io.projectreactor:reactor-core:3.3.0.RELEASE'
