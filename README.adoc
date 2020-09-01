@@ -166,3 +166,4 @@ If you detect a bug or have a feature request or a good idea for catching common
 == Contributors
 
 * https://github.com/lhotari[Lari Hotari] (https://twitter.com/lhotari[@lhotari on Twitter])
+* https://github.com/Stephan202[Stephan Schroevers]
