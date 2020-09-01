@@ -20,11 +20,6 @@ public class ReactiveStreamsPublisherReturnValueIgnoredPositiveCases {
     }
 
     {
-        new Publisher() {
-        };
-        new Flux();
-        new Mono();
-
         // BUG: Diagnostic contains: Reactive Streams Publisher must be checked.
         getPublisher();
         // BUG: Diagnostic contains: Reactive Streams Publisher must be checked.

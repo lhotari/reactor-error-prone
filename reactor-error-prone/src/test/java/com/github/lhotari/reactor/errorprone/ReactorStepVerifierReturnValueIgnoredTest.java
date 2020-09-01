@@ -3,10 +3,8 @@ package com.github.lhotari.reactor.errorprone;
 import com.google.errorprone.CompilationTestHelper;
 import org.junit.Test;
 
-import static com.github.lhotari.reactor.errorprone.ReactiveTypesFixture.addReactiveTypeStubs;
-
 public class ReactorStepVerifierReturnValueIgnoredTest {
-    private final CompilationTestHelper compilationHelper = addReactiveTypeStubs(CompilationTestHelper.newInstance(ReactorStepVerifierReturnValueIgnored.class, getClass()))
+    private final CompilationTestHelper compilationHelper = CompilationTestHelper.newInstance(ReactorStepVerifierReturnValueIgnored.class, getClass())
             .addSourceLines(
                     "reactor/test/StepVerifier.java",
                     "package reactor.test;",

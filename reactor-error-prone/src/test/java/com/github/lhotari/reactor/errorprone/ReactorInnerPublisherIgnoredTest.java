@@ -8,7 +8,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class ReactorInnerPublisherIgnoredTest {
     private final CompilationTestHelper compilationHelper =
-            ReactiveTypesFixture.addReactiveTypeStubs(CompilationTestHelper.newInstance(ReactorInnerPublisherIgnored.class, getClass()));
+            CompilationTestHelper.newInstance(ReactorInnerPublisherIgnored.class, getClass());
 
     @Test
     public void positiveCases() {
@@ -42,7 +42,7 @@ public class ReactorInnerPublisherIgnoredTest {
                         "  }",
                         "  Mono<Void> and() {",
                         "    // BUG: Diagnostic contains: The inner Flux|Mono (Publisher) is ignored and it is never scheduled for execution",
-                        "    return getFlux().and(null);",
+                        "    return getFlux().then(null);",
                         "  }",
                         "}")
                 .doTest();
