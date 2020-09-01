@@ -137,8 +137,28 @@ Example of custom configuration to workaround Lombok & Error Prone issues:
 ```
     tasks.withType(JavaCompile).configureEach {
         options.errorprone {
-            disableWarningsInGeneratedCode = true
             disable 'FallThrough', 'OverrideThrowableToString', 'UnusedVariable', 'UnusedMethod'
+        }
+    }
+```
+
+Another solution is to configure Lombok to generate `@javax.annotation.Generated("lombok")` annotations by setting `lombok.addJavaxGeneratedAnnotation = true` in `lombok.config` files (i.e. `src/main/java/lombok.config`, `src/test/java/lombok.config`):
+```
+lombok.addJavaxGeneratedAnnotation = true
+```
+You might have to add `compileOnly 'javax.annotation:javax.annotation-api:1.3.2'` dependency in the gradle build file if `javax.annotation.Generated` annotation class isn't already available on the compilation classpath.
+
+When Lombok has been configured with `lombok.addJavaxGeneratedAnnotation = true`, the `disableWarningsInGeneratedCode = true` setting of the Errorprone Gradle plugin will now be effective and Errorprone should no more crash when working with projects that use Lombok.
+
+Example configuration:
+```
+    dependencies {
+        compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.errorprone {
+            disableWarningsInGeneratedCode = true
         }
     }
 ```
